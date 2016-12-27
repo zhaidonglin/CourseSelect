@@ -1,0 +1,214 @@
+DEBUG 2016-08-10 17:35:23,288 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-08-10 17:35:23,313 [1    ] Abp.Modules.AbpModuleManager             - Found 7 ABP modules in total.
+DEBUG 2016-08-10 17:35:23,316 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.Migrator.CourseSelectingMigratorModule, CourseSelecting.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 17:35:23,318 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.CourseSelectingDataModule, CourseSelecting.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 17:35:23,318 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.10.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 17:35:23,319 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.10.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 17:35:23,319 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.10.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 17:35:23,320 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.10.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 17:35:23,320 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.CourseSelectingCoreModule, CourseSelecting.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 17:35:23,322 [1    ] Abp.Modules.AbpModuleManager             - 7 modules loaded.
+DEBUG 2016-08-10 17:35:24,203 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: CourseSelecting.EntityFramework.CourseSelectingDbContext, CourseSelecting.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 17:35:24,290 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2016-08-10 17:35:24,305 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-08-10 17:35:24,306 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-08-10 17:35:24,308 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: CourseSelecting
+INFO  2016-08-10 17:35:24,597 [1    ] CourseSelecting.Migrator.Log             - Host database: Default
+INFO  2016-08-10 17:35:24,597 [1    ] CourseSelecting.Migrator.Log             - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2016-08-10 17:35:31,965 [1    ] CourseSelecting.Migrator.Log             - HOST database migration started...
+INFO  2016-08-10 17:35:33,543 [1    ] CourseSelecting.Migrator.Log             - An error occured during migration of host database:
+INFO  2016-08-10 17:35:33,723 [1    ] CourseSelecting.Migrator.Log             - System.Data.SqlClient.SqlException (0x80131904): 用户 'PC-20160314PYJF\joy' 登录失败。
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.<Open>b__36(DbConnection t, DbConnectionInterceptionContext c)
+   在 System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext](TTarget target, Action`2 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   在 System.Data.Entity.Infrastructure.Interception.DbConnectionDispatcher.Open(DbConnection connection, DbInterceptionContext interceptionContext)
+   在 System.Data.Entity.SqlServer.SqlProviderServices.<>c__DisplayClass33.<UsingConnection>b__32()
+   在 System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.<>c__DisplayClass1.<Execute>b__0()
+   在 System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   在 System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute(Action operation)
+   在 System.Data.Entity.SqlServer.SqlProviderServices.UsingConnection(DbConnection sqlConnection, Action`1 act)
+   在 System.Data.Entity.SqlServer.SqlProviderServices.UsingMasterConnection(DbConnection sqlConnection, Action`1 act)
+   在 System.Data.Entity.SqlServer.SqlProviderServices.CreateDatabaseFromScript(Nullable`1 commandTimeout, DbConnection sqlConnection, String createDatabaseScript)
+   在 System.Data.Entity.SqlServer.SqlProviderServices.DbCreateDatabase(DbConnection connection, Nullable`1 commandTimeout, StoreItemCollection storeItemCollection)
+   在 System.Data.Entity.Core.Common.DbProviderServices.CreateDatabase(DbConnection connection, Nullable`1 commandTimeout, StoreItemCollection storeItemCollection)
+   在 System.Data.Entity.Core.Objects.ObjectContext.CreateDatabase()
+   在 System.Data.Entity.Migrations.Utilities.DatabaseCreator.Create(DbConnection connection)
+   在 System.Data.Entity.Migrations.DbMigrator.EnsureDatabaseExists(Action mustSucceedToKeepDatabase)
+   在 System.Data.Entity.Migrations.DbMigrator.Update(String targetMigration)
+   在 System.Data.Entity.MigrateDatabaseToLatestVersion`2.InitializeDatabase(TContext context)
+   在 Abp.Zero.EntityFramework.AbpZeroDbMigrator`2.CreateOrMigrate(AbpTenantBase tenant) 位置 D:\Halil\GitHub\module-zero\src\Abp.Zero.EntityFramework\Zero\EntityFramework\AbpZeroDbMigrator.cs:行号 67
+   在 Abp.Zero.EntityFramework.AbpZeroDbMigrator`2.CreateOrMigrateForHost() 位置 D:\Halil\GitHub\module-zero\src\Abp.Zero.EntityFramework\Zero\EntityFramework\AbpZeroDbMigrator.cs:行号 32
+   在 CourseSelecting.Migrator.MultiTenantMigrateExecuter.Run(Boolean skipConnVerification) 位置 G:\Project Files\CourseSelecting\Tools\CourseSelecting.Migrator\MultiTenantMigrateExecuter.cs:行号 60
+ClientConnectionId:c9832d3f-7082-4a67-9003-3024cfd35839
+Error Number:18456,State:1,Class:14
+INFO  2016-08-10 17:35:33,726 [1    ] CourseSelecting.Migrator.Log             - Canceled migrations.
+DEBUG 2016-08-10 17:36:58,963 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-08-10 17:36:58,974 [1    ] Abp.Modules.AbpModuleManager             - Found 7 ABP modules in total.
+DEBUG 2016-08-10 17:36:58,977 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.Migrator.CourseSelectingMigratorModule, CourseSelecting.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 17:36:58,978 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.CourseSelectingDataModule, CourseSelecting.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 17:36:58,978 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.10.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 17:36:58,978 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.10.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 17:36:58,979 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.10.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 17:36:58,979 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.10.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 17:36:58,979 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.CourseSelectingCoreModule, CourseSelecting.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 17:36:58,981 [1    ] Abp.Modules.AbpModuleManager             - 7 modules loaded.
+DEBUG 2016-08-10 17:36:59,253 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: CourseSelecting.EntityFramework.CourseSelectingDbContext, CourseSelecting.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 17:36:59,300 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2016-08-10 17:36:59,306 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-08-10 17:36:59,308 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-08-10 17:36:59,309 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: CourseSelecting
+INFO  2016-08-10 17:36:59,465 [1    ] CourseSelecting.Migrator.Log             - Host database: Default
+INFO  2016-08-10 17:36:59,465 [1    ] CourseSelecting.Migrator.Log             - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2016-08-10 17:37:07,029 [1    ] CourseSelecting.Migrator.Log             - HOST database migration started...
+INFO  2016-08-10 17:37:09,900 [1    ] CourseSelecting.Migrator.Log             - HOST database migration completed.
+INFO  2016-08-10 17:37:09,900 [1    ] CourseSelecting.Migrator.Log             - --------------------------------------------------------
+INFO  2016-08-10 17:37:09,909 [1    ] CourseSelecting.Migrator.Log             - All databases have been migrated.
+DEBUG 2016-08-10 17:37:12,900 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2016-08-10 17:37:12,900 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2016-08-10 20:58:50,732 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-08-10 20:58:50,817 [1    ] Abp.Modules.AbpModuleManager             - Found 7 ABP modules in total.
+DEBUG 2016-08-10 20:58:50,820 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.Migrator.CourseSelectingMigratorModule, CourseSelecting.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 20:58:50,822 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.CourseSelectingDataModule, CourseSelecting.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 20:58:50,823 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.10.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 20:58:50,823 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.10.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 20:58:50,823 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.10.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 20:58:50,823 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.10.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 20:58:50,824 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.CourseSelectingCoreModule, CourseSelecting.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 20:58:50,826 [1    ] Abp.Modules.AbpModuleManager             - 7 modules loaded.
+DEBUG 2016-08-10 20:58:51,256 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: CourseSelecting.EntityFramework.CourseSelectingDbContext, CourseSelecting.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 20:58:51,312 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2016-08-10 20:58:51,320 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-08-10 20:58:51,335 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-08-10 20:58:51,343 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: CourseSelecting
+INFO  2016-08-10 20:58:51,561 [1    ] CourseSelecting.Migrator.Log             - Host database: Default
+INFO  2016-08-10 20:58:51,562 [1    ] CourseSelecting.Migrator.Log             - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2016-08-10 20:58:54,813 [1    ] CourseSelecting.Migrator.Log             - HOST database migration started...
+DEBUG 2016-08-10 21:00:42,458 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-08-10 21:00:42,471 [1    ] Abp.Modules.AbpModuleManager             - Found 7 ABP modules in total.
+DEBUG 2016-08-10 21:00:42,476 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.Migrator.CourseSelectingMigratorModule, CourseSelecting.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 21:00:42,478 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.CourseSelectingDataModule, CourseSelecting.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 21:00:42,478 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.10.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 21:00:42,478 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.10.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 21:00:42,478 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.10.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 21:00:42,478 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.10.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 21:00:42,478 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.CourseSelectingCoreModule, CourseSelecting.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 21:00:42,481 [1    ] Abp.Modules.AbpModuleManager             - 7 modules loaded.
+DEBUG 2016-08-10 21:00:42,815 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: CourseSelecting.EntityFramework.CourseSelectingDbContext, CourseSelecting.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-10 21:00:42,871 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2016-08-10 21:00:42,879 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-08-10 21:00:42,881 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-08-10 21:00:42,887 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: CourseSelecting
+INFO  2016-08-10 21:00:43,080 [1    ] CourseSelecting.Migrator.Log             - Host database: Default
+INFO  2016-08-10 21:00:43,080 [1    ] CourseSelecting.Migrator.Log             - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2016-08-10 21:00:46,356 [1    ] CourseSelecting.Migrator.Log             - HOST database migration started...
+INFO  2016-08-10 21:00:49,857 [1    ] CourseSelecting.Migrator.Log             - HOST database migration completed.
+INFO  2016-08-10 21:00:49,857 [1    ] CourseSelecting.Migrator.Log             - --------------------------------------------------------
+INFO  2016-08-10 21:00:49,870 [1    ] CourseSelecting.Migrator.Log             - All databases have been migrated.
+DEBUG 2016-08-10 21:00:51,721 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2016-08-10 21:00:51,721 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2016-08-12 17:18:36,571 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-08-12 17:18:36,586 [1    ] Abp.Modules.AbpModuleManager             - Found 7 ABP modules in total.
+DEBUG 2016-08-12 17:18:36,589 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.Migrator.CourseSelectingMigratorModule, CourseSelecting.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-12 17:18:36,592 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.CourseSelectingDataModule, CourseSelecting.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-12 17:18:36,592 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.10.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-12 17:18:36,592 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.10.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-12 17:18:36,592 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.10.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-12 17:18:36,592 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.10.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-12 17:18:36,593 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.CourseSelectingCoreModule, CourseSelecting.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-12 17:18:36,595 [1    ] Abp.Modules.AbpModuleManager             - 7 modules loaded.
+DEBUG 2016-08-12 17:18:36,938 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: CourseSelecting.EntityFramework.CourseSelectingDbContext, CourseSelecting.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-12 17:18:37,005 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2016-08-12 17:18:37,013 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-08-12 17:18:37,014 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-08-12 17:18:37,021 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: CourseSelecting
+INFO  2016-08-12 17:18:37,222 [1    ] CourseSelecting.Migrator.Log             - Host database: Default
+INFO  2016-08-12 17:18:37,223 [1    ] CourseSelecting.Migrator.Log             - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2016-08-12 17:18:45,400 [1    ] CourseSelecting.Migrator.Log             - HOST database migration started...
+INFO  2016-08-12 17:18:48,334 [1    ] CourseSelecting.Migrator.Log             - An error occured during migration of host database:
+INFO  2016-08-12 17:18:48,387 [1    ] CourseSelecting.Migrator.Log             - System.Data.Entity.Migrations.Infrastructure.AutomaticMigrationsDisabledException: Unable to update database to match the current model because there are pending changes and automatic migration is disabled. Either write the pending model changes to a code-based migration or enable automatic migration. Set DbMigrationsConfiguration.AutomaticMigrationsEnabled to true to enable automatic migration.
+   在 System.Data.Entity.Migrations.DbMigrator.Upgrade(IEnumerable`1 pendingMigrations, String targetMigrationId, String lastMigrationId)
+   在 System.Data.Entity.Migrations.DbMigrator.UpdateInternal(String targetMigration)
+   在 System.Data.Entity.Migrations.DbMigrator.<>c__DisplayClassc.<Update>b__b()
+   在 System.Data.Entity.Migrations.DbMigrator.EnsureDatabaseExists(Action mustSucceedToKeepDatabase)
+   在 System.Data.Entity.Migrations.DbMigrator.Update(String targetMigration)
+   在 System.Data.Entity.MigrateDatabaseToLatestVersion`2.InitializeDatabase(TContext context)
+   在 Abp.Zero.EntityFramework.AbpZeroDbMigrator`2.CreateOrMigrate(AbpTenantBase tenant) 位置 D:\Halil\GitHub\module-zero\src\Abp.Zero.EntityFramework\Zero\EntityFramework\AbpZeroDbMigrator.cs:行号 67
+   在 Abp.Zero.EntityFramework.AbpZeroDbMigrator`2.CreateOrMigrateForHost() 位置 D:\Halil\GitHub\module-zero\src\Abp.Zero.EntityFramework\Zero\EntityFramework\AbpZeroDbMigrator.cs:行号 32
+   在 CourseSelecting.Migrator.MultiTenantMigrateExecuter.Run(Boolean skipConnVerification) 位置 D:\Project Files\CourseSelecting\Tools\CourseSelecting.Migrator\MultiTenantMigrateExecuter.cs:行号 60
+INFO  2016-08-12 17:18:48,388 [1    ] CourseSelecting.Migrator.Log             - Canceled migrations.
+DEBUG 2016-08-19 17:21:24,092 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-08-19 17:21:24,102 [1    ] Abp.Modules.AbpModuleManager             - Found 7 ABP modules in total.
+DEBUG 2016-08-19 17:21:24,102 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.Migrator.CourseSelectingMigratorModule, CourseSelecting.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-19 17:21:24,102 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.CourseSelectingDataModule, CourseSelecting.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-19 17:21:24,102 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.10.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-19 17:21:24,102 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.10.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-19 17:21:24,102 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.10.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-19 17:21:24,102 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.10.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-19 17:21:24,102 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.CourseSelectingCoreModule, CourseSelecting.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-19 17:21:24,102 [1    ] Abp.Modules.AbpModuleManager             - 7 modules loaded.
+DEBUG 2016-08-19 17:21:24,332 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: CourseSelecting.EntityFramework.CourseSelectingDbContext, CourseSelecting.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-08-19 17:21:24,382 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2016-08-19 17:21:24,392 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-08-19 17:21:24,392 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-08-19 17:21:24,392 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: CourseSelecting
+INFO  2016-08-19 17:21:24,612 [1    ] CourseSelecting.Migrator.Log             - Host database: Default
+INFO  2016-08-19 17:21:24,612 [1    ] CourseSelecting.Migrator.Log             - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2016-08-19 17:21:28,752 [1    ] CourseSelecting.Migrator.Log             - HOST database migration started...
+INFO  2016-08-19 17:21:30,852 [1    ] CourseSelecting.Migrator.Log             - HOST database migration completed.
+INFO  2016-08-19 17:21:30,852 [1    ] CourseSelecting.Migrator.Log             - --------------------------------------------------------
+INFO  2016-08-19 17:21:30,862 [1    ] CourseSelecting.Migrator.Log             - All databases have been migrated.
+DEBUG 2016-08-19 17:21:38,712 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2016-08-19 17:21:38,712 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2016-09-13 15:25:33,549 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-09-13 15:25:33,596 [1    ] Abp.Modules.AbpModuleManager             - Found 7 ABP modules in total.
+DEBUG 2016-09-13 15:25:33,596 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.Migrator.CourseSelectingMigratorModule, CourseSelecting.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-09-13 15:25:33,596 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.CourseSelectingDataModule, CourseSelecting.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-09-13 15:25:33,596 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.10.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-09-13 15:25:33,596 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.10.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-09-13 15:25:33,611 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.10.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-09-13 15:25:33,611 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.10.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-09-13 15:25:33,611 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.CourseSelectingCoreModule, CourseSelecting.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-09-13 15:25:33,611 [1    ] Abp.Modules.AbpModuleManager             - 7 modules loaded.
+DEBUG 2016-09-13 15:25:33,986 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: CourseSelecting.EntityFramework.CourseSelectingDbContext, CourseSelecting.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-09-13 15:25:34,048 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2016-09-13 15:25:34,048 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-09-13 15:25:34,048 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-09-13 15:25:34,064 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: CourseSelecting
+INFO  2016-09-13 15:25:34,220 [1    ] CourseSelecting.Migrator.Log             - Host database: Default
+INFO  2016-09-13 15:25:34,220 [1    ] CourseSelecting.Migrator.Log             - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2016-09-13 15:25:38,447 [1    ] CourseSelecting.Migrator.Log             - HOST database migration started...
+INFO  2016-09-13 15:25:40,272 [1    ] CourseSelecting.Migrator.Log             - HOST database migration completed.
+INFO  2016-09-13 15:25:40,272 [1    ] CourseSelecting.Migrator.Log             - --------------------------------------------------------
+INFO  2016-09-13 15:25:40,335 [1    ] CourseSelecting.Migrator.Log             - All databases have been migrated.
+DEBUG 2016-09-13 15:25:45,842 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2016-09-13 15:25:45,842 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2016-09-18 18:17:31,509 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-09-18 18:17:31,527 [1    ] Abp.Modules.AbpModuleManager             - Found 7 ABP modules in total.
+DEBUG 2016-09-18 18:17:31,529 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.Migrator.CourseSelectingMigratorModule, CourseSelecting.Migrator, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-09-18 18:17:31,531 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.CourseSelectingDataModule, CourseSelecting.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-09-18 18:17:31,531 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.10.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-09-18 18:17:31,531 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.10.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-09-18 18:17:31,531 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.10.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-09-18 18:17:31,532 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.10.3.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-09-18 18:17:31,532 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: CourseSelecting.CourseSelectingCoreModule, CourseSelecting.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-09-18 18:17:31,533 [1    ] Abp.Modules.AbpModuleManager             - 7 modules loaded.
+DEBUG 2016-09-18 18:17:31,788 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: CourseSelecting.EntityFramework.CourseSelectingDbContext, CourseSelecting.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-09-18 18:17:31,848 [1    ] Abp.Localization.LocalizationManager     - Initializing 3 localization sources.
+DEBUG 2016-09-18 18:17:31,854 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-09-18 18:17:31,860 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-09-18 18:17:31,861 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: CourseSelecting
+INFO  2016-09-18 18:17:32,046 [1    ] CourseSelecting.Migrator.Log             - Host database: Default
+INFO  2016-09-18 18:17:32,046 [1    ] CourseSelecting.Migrator.Log             - Continue to migration for this host database and all tenants..? (Y/N): 
+INFO  2016-09-18 18:17:34,487 [1    ] CourseSelecting.Migrator.Log             - HOST database migration started...
+INFO  2016-09-18 18:17:37,771 [1    ] CourseSelecting.Migrator.Log             - HOST database migration completed.
+INFO  2016-09-18 18:17:37,771 [1    ] CourseSelecting.Migrator.Log             - --------------------------------------------------------
+INFO  2016-09-18 18:17:37,796 [1    ] CourseSelecting.Migrator.Log             - All databases have been migrated.
+DEBUG 2016-09-18 18:17:37,798 [1    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2016-09-18 18:17:37,799 [1    ] Abp.Modules.AbpModuleManager             - Shutting down completed.

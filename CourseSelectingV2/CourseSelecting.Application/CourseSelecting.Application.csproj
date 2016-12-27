@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EDF5D964-4C0F-4F19-B674-58A38A5E5401}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CourseSelecting.Application</RootNamespace>
+    <AssemblyName>CourseSelecting.Application</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Abp, Version=0.10.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.0.10.3.0\lib\net452\Abp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Abp.AutoMapper, Version=0.10.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.AutoMapper.0.10.3.0\lib\net452\Abp.AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Abp.Zero, Version=0.10.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.Zero.0.10.1.0\lib\net452\Abp.Zero.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.Logging, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Castle.LoggingFacility.3.3.0\lib\net45\Castle.Facilities.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.AsyncEx, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nito.AsyncEx.3.0.1\lib\net45\Nito.AsyncEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Concurrent, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nito.AsyncEx.3.0.1\lib\net45\Nito.AsyncEx.Concurrent.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Enlightenment, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nito.AsyncEx.3.0.1\lib\net45\Nito.AsyncEx.Enlightenment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.2.0\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoMapperWebConfig.cs" />
+    <Compile Include="CourseSelectingApplicationModule.cs" />
+    <Compile Include="CourseSelectingAppServiceBase.cs" />
+    <Compile Include="EducationV2\CourseTime\CourseTimeV2AppService.cs" />
+    <Compile Include="EducationV2\CourseTime\Dto\CourseTimeDto.cs" />
+    <Compile Include="EducationV2\CourseTime\Dto\CourseTimeInput.cs" />
+    <Compile Include="EducationV2\CourseTime\Dto\CourseTimeQueryInput.cs" />
+    <Compile Include="EducationV2\CourseTime\Dto\CourseTimeSimpleDto.cs" />
+    <Compile Include="EducationV2\CourseTime\ICourseTimeV2AppService.cs" />
+    <Compile Include="EducationV2\Course\CourseV2AppService.cs" />
+    <Compile Include="EducationV2\Course\Dto\CourseInput.cs" />
+    <Compile Include="EducationV2\Course\Dto\CourseDto.cs" />
+    <Compile Include="EducationV2\Course\Dto\CourseSimpleDto.cs" />
+    <Compile Include="EducationV2\Course\Dto\CourseQueryInput.cs" />
+    <Compile Include="EducationV2\Course\ICourseV2AppService.cs" />
+    <Compile Include="EducationV2\ExamTime\Dto\ExamTimeDto.cs" />
+    <Compile Include="EducationV2\ExamTime\Dto\ExamTimeInput.cs" />
+    <Compile Include="EducationV2\ExamTime\Dto\ExamTimeQueryInput.cs" />
+    <Compile Include="EducationV2\ExamTime\Dto\ExamTimeSimpleDto.cs" />
+    <Compile Include="EducationV2\ExamTime\ExamTimeV2AppService.cs" />
+    <Compile Include="EducationV2\ExamTime\IExamTimeV2AppService.cs" />
+    <Compile Include="EducationV2\Semester\Dto\SemesterInput.cs" />
+    <Compile Include="EducationV2\Semester\Dto\SemesterQueryInput.cs" />
+    <Compile Include="EducationV2\StudentCourseTime\Dto\StudentCourseTimeInput.cs" />
+    <Compile Include="EducationV2\StudentCourseTime\Dto\StudentCourseTimeQueryInput.cs" />
+    <Compile Include="EducationV2\StudentExamTime\Dto\StudentExamTimeInput.cs" />
+    <Compile Include="EducationV2\StudentExamTime\Dto\StudentExamTimeQueryInput.cs" />
+    <Compile Include="EducationV2\StudentSubjectProject\Dto\StudentSubjectProjectDto.cs" />
+    <Compile Include="EducationV2\StudentSubjectProject\Dto\StudentSubjectProjectInput.cs" />
+    <Compile Include="EducationV2\StudentSubjectProject\Dto\StudentSubjectProjectQueryInput.cs" />
+    <Compile Include="EducationV2\StudentSubjectProject\Dto\StudentSubjectProjectSimpleDto.cs" />
+    <Compile Include="EducationV2\Semester\Dto\SemesterDto.cs" />
+    <Compile Include="EducationV2\Semester\Dto\SemesterSimpleDto.cs" />
+    <Compile Include="EducationV2\StudentCourseTime\Dto\StudentCourseTimeDto.cs" />
+    <Compile Include="EducationV2\StudentCourseTime\Dto\StudentCourseTimeSimpleDto.cs" />
+    <Compile Include="EducationV2\StudentExamTime\Dto\StudentExamTimeDto.cs" />
+    <Compile Include="EducationV2\StudentExamTime\Dto\StudentExamTimeSimpleDto.cs" />
+    <Compile Include="EducationV2\SubjectProject\Dto\SubjectProjectDto.cs" />
+    <Compile Include="EducationV2\SubjectProject\Dto\SubjectProjectInput.cs" />
+    <Compile Include="EducationV2\SubjectProject\Dto\SubjectProjectQueryInput.cs" />
+    <Compile Include="EducationV2\SubjectProject\Dto\SubjectProjectSimpleDto.cs" />
+    <Compile Include="EducationV2\SubjectProject\ISubjectProjectV2AppService.cs" />
+    <Compile Include="EducationV2\SubjectProject\SubjectProjectV2AppService.cs" />
+    <Compile Include="EducationV2\StudentSubjectProject\IStudentSubjectProjectV2AppService.cs" />
+    <Compile Include="EducationV2\StudentSubjectProject\StudentSubjectProjectV2AppService.cs" />
+    <Compile Include="EducationV2\TeacherCourse\Dto\TeacherCourseDto.cs" />
+    <Compile Include="EducationV2\TeacherCourse\Dto\TeacherCourseInput.cs" />
+    <Compile Include="EducationV2\TeacherCourse\Dto\TeacherCourseQueryInput.cs" />
+    <Compile Include="EducationV2\TeacherCourse\Dto\TeacherCourseSimpleDto.cs" />
+    <Compile Include="EducationV2\TeacherCourse\ITeacherCourseV2AppService.cs" />
+    <Compile Include="EducationV2\TeacherCourse\TeacherCourseV2AppService.cs" />
+    <Compile Include="EducationV2\Semester\ISemesterV2AppService.cs" />
+    <Compile Include="EducationV2\Semester\SemesterV2AppService.cs" />
+    <Compile Include="EducationV2\StudentCourseTime\IStudentCourseTimeV2AppService.cs" />
+    <Compile Include="EducationV2\StudentCourseTime\StudentCourseTimeV2AppService.cs" />
+    <Compile Include="EducationV2\StudentExamTime\IStudentExamTimeV2AppService.cs" />
+    <Compile Include="EducationV2\StudentExamTime\StudentExamTimeV2AppService.cs" />
+    <Compile Include="Education\Dto\AddSelectSubjectProjectInput.cs" />
+    <Compile Include="Education\Dto\AddSubjectProjectInput.cs" />
+    <Compile Include="Education\Dto\CheckTeacherEnabledDeleteOutput.cs" />
+    <Compile Include="Education\Dto\CourseExamTimeDto.cs" />
+    <Compile Include="Education\Dto\CourseSimpleListDto.cs" />
+    <Compile Include="Education\Dto\CourseTimeAddInput.cs" />
+    <Compile Include="Education\Dto\CourseTimeDto.cs" />
+    <Compile Include="Education\Dto\CreditDetailsDto.cs" />
+    <Compile Include="Education\Dto\EditCreditsInput.cs" />
+    <Compile Include="Education\Dto\EditSubjectProjectInput.cs" />
+    <Compile Include="Education\Dto\GetCourseTimeEventInput.cs" />
+    <Compile Include="Education\Dto\GetCourseTimeInput.cs" />
+    <Compile Include="Education\Dto\GetCreditsInput.cs" />
+    <Compile Include="Education\Dto\GetExamTimeEventInput.cs" />
+    <Compile Include="Education\Dto\GetSelectSubjectProjectsListDto.cs" />
+    <Compile Include="Education\Dto\GetSubjectProjectsInput.cs" />
+    <Compile Include="Education\Dto\SemesterDto.cs" />
+    <Compile Include="Education\Dto\SSCourseTimeDto.cs" />
+    <Compile Include="Education\Dto\StudentCourseExamTimeDto.cs" />
+    <Compile Include="Education\Dto\StudentEnabledCourseTimeDto.cs" />
+    <Compile Include="Education\Dto\StudentEnabledExamTimeDto.cs" />
+    <Compile Include="Education\Dto\StudentSubjectProjectDto.cs" />
+    <Compile Include="Education\Dto\SubjectProjectCoursesDto.cs" />
+    <Compile Include="Education\Dto\SubjectProjectDto.cs" />
+    <Compile Include="Education\Dto\SubjectProjectSimpleDto.cs" />
+    <Compile Include="Education\Dto\SubjectProjectsListDto.cs" />
+    <Compile Include="Education\Dto\TeacherCourseDto.cs" />
+    <Compile Include="Education\ISubjectProjectAppService.cs" />
+    <Compile Include="Education\SubjectProjectAppService.cs" />
+    <Compile Include="IBaseAppService.cs" />
+    <Compile Include="MultiTenancy\Dto\CreateTenantInput.cs" />
+    <Compile Include="MultiTenancy\ITenantAppService.cs" />
+    <Compile Include="MultiTenancy\Dto\TenantListDto.cs" />
+    <Compile Include="MultiTenancy\TenantAppService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryInput.cs" />
+    <Compile Include="Roles\IRoleAppService.cs" />
+    <Compile Include="Roles\Dto\UpdateRolePermissionsInput.cs" />
+    <Compile Include="Education\Dto\CourseCalenderDetailsDto.cs" />
+    <Compile Include="Education\Dto\CourseCalenderDto.cs" />
+    <Compile Include="Education\Dto\CalenderListDto.cs" />
+    <Compile Include="Users\Dto\AddStudentInput.cs" />
+    <Compile Include="Users\Dto\EditStudentInput.cs" />
+    <Compile Include="Education\Dto\EditTeacherCoursesInput.cs" />
+    <Compile Include="Users\Dto\GetStudentsInput.cs" />
+    <Compile Include="Education\CourseAppService.cs" />
+    <Compile Include="Education\Dto\CourseDetailsDto.cs" />
+    <Compile Include="Education\Dto\AddCourseInput.cs" />
+    <Compile Include="Users\Dto\TeacherSimpleDetailsDto.cs" />
+    <Compile Include="Users\ResetTeacherInput.cs" />
+    <Compile Include="Users\StudentAppService.cs" />
+    <Compile Include="Users\Dto\AddTeacherInput.cs" />
+    <Compile Include="Education\Dto\CourseListDto.cs" />
+    <Compile Include="Users\Dto\CreateUserInput.cs" />
+    <Compile Include="Education\Dto\EditCourseInput.cs" />
+    <Compile Include="Users\Dto\EditTeacherInput.cs" />
+    <Compile Include="Education\Dto\GetCoursesInput.cs" />
+    <Compile Include="Users\Dto\GetTeachersInput.cs" />
+    <Compile Include="Users\Dto\TeacherDetailsDto.cs" />
+    <Compile Include="Users\Dto\TeacherListDto.cs" />
+    <Compile Include="Users\IStudentAppService.cs" />
+    <Compile Include="Users\Dto\UserUpdatePwdInput.cs" />
+    <Compile Include="Education\ICourseAppService.cs" />
+    <Compile Include="Users\ITeacherAppService.cs" />
+    <Compile Include="Users\IUserAppService.cs" />
+    <Compile Include="Roles\RoleAppService.cs" />
+    <Compile Include="Sessions\Dto\GetCurrentLoginInformationsOutput.cs" />
+    <Compile Include="Sessions\Dto\TenantLoginInfoDto.cs" />
+    <Compile Include="Sessions\Dto\UserLoginInfoDto.cs" />
+    <Compile Include="Sessions\ISessionAppService.cs" />
+    <Compile Include="Sessions\SessionAppService.cs" />
+    <Compile Include="Users\Dto\ProhibitPermissionInput.cs" />
+    <Compile Include="Users\StudentDetailsDto.cs" />
+    <Compile Include="Users\Dto\StudentListDto.cs" />
+    <Compile Include="Users\Student\Dto\StudentDto.cs" />
+    <Compile Include="Users\Student\Dto\StudentInput.cs" />
+    <Compile Include="Users\Student\Dto\StudentQueryInput.cs" />
+    <Compile Include="Users\Student\Dto\StudentSimpleDto.cs" />
+    <Compile Include="Users\Student\IStudentV2AppService.cs" />
+    <Compile Include="Users\Student\StudentV2AppService.cs" />
+    <Compile Include="Users\TeacherAppService.cs" />
+    <Compile Include="Users\Teacher\Dto\TeacherDto.cs" />
+    <Compile Include="Users\Teacher\Dto\TeacherInput.cs" />
+    <Compile Include="Users\Teacher\Dto\TeacherSimpleDto.cs" />
+    <Compile Include="Users\Teacher\ITeacherV2AppService.cs" />
+    <Compile Include="Users\Teacher\Dto\TeacherQueryInput.cs" />
+    <Compile Include="Users\Teacher\TeacherV2AppService.cs" />
+    <Compile Include="Users\UserAppService.cs" />
+    <Compile Include="Users\Dto\UserListDto.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CourseSelecting.Core\CourseSelecting.Core.csproj">
+      <Project>{17298ea0-af73-4f30-b6f1-2066100d7d74}</Project>
+      <Name>CourseSelecting.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

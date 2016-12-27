@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<localizationDictionary culture="zh-CN">
+  <texts>
+    <text name="HomePage" value="主页" />
+    <text name="About" value="关于我们" />
+    <text name="WellcomeMessage" value="欢迎使用 CourseSelecting!" />
+    
+    <text name="FormIsNotValidMessage" value="部分输入信息不符合要求，请检查并改正.." />
+    <text name="TenantNameCanNotBeEmpty" value="租户名不能为空" />
+
+    <text name="InvalidUserNameOrPassword" value="用户名或密码无效" />
+    <text name="ThereIsNoTenantDefinedWithName{0}" value="租户 {0}不存在" />
+    <text name="TenantIsNotActive" value="租户 {0} 未激活." />
+    <text name="UserIsNotActiveAndCanNotLogin" value="用户 {0} 未激活，不能登录." />
+    <text name="PleaseEnterLoginInformation" value="请输入登录信息" />
+    <text name="TenancyName" value="租户名称" />
+    <text name="UserNameOrEmail" value="用户名或邮箱地址" />
+    <text name="Password" value="密码" />
+    <text name="RememberMe" value="记住我" />
+    <text name="LogIn" value="登录" />
+
+    <text name="LoginFailed" value="登录失败!" />
+
+    <text name="MenuTeacherManage" value="教师管理" />
+    
+    <text name="MenuSubjectProjectManage" value="项目管理" />
+    <text name="MenuCourseManage" value="课程管理" />
+    <text name="MenuStudentManage" value="学生管理" />
+    <text name="MenuCreditManage" value="学分管理" />
+    <text name="MenuOrderManage" value="预约管理" />
+    <text name="MenuOrderExamManage" value="考试管理" />
+    <text name="MenuAdminResetPwd" value="修改密码" />
+    <text name="MenuTeacherCourseTimeTables" value="课程管理" />
+    <text name="MenuExamManage" value="考试管理" />
+    <text name="MenuExamOrderedManage" value="考试预约" />
+    <text name="MenuTeacherCreditManage" value="学分管理" />
+    <text name="MenuTeacherSelfInfo" value="个人资料" />
+    <text name="MenuTeacherResetPwd" value="修改密码" />
+    <text name="MenuStudentCourseSelect" value="项目" />
+    <text name="MenuStudentCourseTimeTables" value="课程表" />
+    <text name="MenuStudentCreditInfo" value="学分查询" />
+    <text name="MenuStudentSelfInfo" value="个人资料" />
+    <text name="MenuStudentResetPwd" value="修改密码" />
+
+
+    <text name="TeacherSelectValueDepartment" value="一临床,二临床,三临床,四临床,五临床,其他" />
+    <text name="TeacherSelectValueMajor" value="内科,外科,麻醉科,妇产科,儿科,急诊科,眼科,耳鼻喉科,皮肤科,护理,其他" />
+    <text name="SelectValueDiploma" value="大专,本科,研究生" />
+    <text name="SelectValueDegree" value="学士,硕士,博士" />
+    <text name="SelectValuePositionalTitle" value="正高,副高,中级,初级,其他" />
+    <text name="SelectValueYearsOfWorking" value="1至2年,3至5年,5至10年,10年以上" />
+    <text name="SelectValueYearsOfTeaching" value="1至2年,3至5年,5至10年,10年以上" />
+    
+    <text name="SelectValueGrade" value="大一,大二,大三,大四,大五" />
+    <text name="SelectValueClass" value="一班,二班" />
+    <text name="SelectValueOriginOfStudent" value="河南,河北,北京,天津,山东,山西,黑龙江,吉林,辽宁,浙江,江苏,上海,安徽,江西,湖南,湖北,新疆,云南,贵州,福建,台湾,宁夏,西藏,四川,重庆,内蒙古,广西,海南,青海,甘肃,陕西,广东,香港,澳门" />
+    <text name="SelectValueProfessionLevel" value="一本,二本" />
+    <text name="SelectValueGender" value="男,女" />
+    <text name="SelectValueFitGrade" value="一年级,二年级,三年级,四年级,五年级" />
+    
+    <text name="StudentSelectValueDepartment" value="基础医学院,公共卫生学院,药学院,医学检验学院,护理学院,管理学院,法医学系,生命科学技术学院,心理学系,外国语言系,生物医学工程学院,国际教育学院,第一临床学院,第三临床学院,口腔学院,其他" />
+    <text name="StudentSelectValueMajor" value="卓越临床,临床定向,基础临床,儿科,影像,精神,麻醉,口腔,法医,预防,康复治疗,检验,卫检,药学,药剂,护理,应心,心理,英语,翻译班,信管,公管,人资,市场,生计,生工,医工,医器班,其他" />
+
+
+    <text name="SelectValueSubjectStyle" value="操作性,非操作性," />
+    <text name="SelectValueSubjectType" value="临床基本技能操作类项目,临床专科类技能操作项目,体格检查及异常体征类项目,症状学类项目,病史采集与诊疗思维类训练项目,临床基本技能非操作类项目" />
+    <text name="SelectValueTeachingStyle" value="理论,实验,讨论,SP,服务," />
+    
+  </texts>
+</localizationDictionary>

@@ -1,0 +1,254 @@
+﻿@using Abp.Threading.Extensions
+@using Abp.Web.Mvc.Extensions
+@model CourseSelecting.Web.Models.Manage.TeacherDetailsModel
+
+@{
+    ViewBag.ActiveMenu = "TeacherManage";
+}
+
+@section Styles
+{
+    @Html.IncludeStyle("~/beyondadmin/assets/css/dataTables.bootstrap.css")
+}
+@section Scripts
+{
+    @Html.IncludeScript("~/beyondadmin/assets/js/validation/bootstrapValidator.js")
+    @Html.IncludeScript("~/beyondadmin/assets/js/select2/select2.js")
+    @Html.IncludeScript("~/beyondadmin/assets/js/fuelux/spinner/fuelux.spinner.min.js")
+
+    @Html.IncludeScript("~/Views/Manage/TeacherEdit.js")
+}
+
+
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="@Url.Action("Index")">首页</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Teacher")">教师管理</a>
+            </li>
+            <li class="active">编辑教师</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Header -->
+    <div class="page-header position-relative">
+        <div class="header-title">
+            <h1>
+                编辑教师
+            </h1>
+        </div>
+        <!--Header Buttons-->
+        <div class="header-buttons">
+            <a class="sidebar-toggler" href="#">
+                <i class="fa fa-arrows-h"></i>
+            </a>
+            <a class="refresh" id="refresh-toggler" href="">
+                <i class="glyphicon glyphicon-refresh"></i>
+            </a>
+            <a class="fullscreen" id="fullscreen-toggler" href="#">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+            </a>
+        </div>
+        <!--Header Buttons End-->
+    </div>
+    <!-- /Page Header -->
+    <!-- Page Body -->
+    <div class="page-body">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget  radius-bordered">
+                    <div class="widget-header">
+                        <span class="widget-caption"></span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="docs-example">
+                            <ul class="nav nav-tabs tabs-flat">
+                                <li class="active"><a href="#info-tab" data-toggle="tab">教师基础信息</a></li>
+                                <li>
+                                    <a data-toggle="tab" href="#details-tab">
+                                        教师详细信息
+                                    </a>
+                                </li>
+                            </ul>
+                            <form id="formEditTeacher" method="post" class="form-horizontal bv-form" novalidate="novalidate">
+                                <div class="tab-content tabs-flat">
+                                    <div class="tab-pane active" id="info-tab">
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">教师工号</label>
+                                            <div class="col-lg-7">
+                                                <input type="hidden" id="lblTeacherId" value="@Model.Teacher.Id" />
+                                                <input type="text" value="@Model.Teacher.TeacherNo" class="form-control" name="teacherNo">
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">教师姓名</label>
+                                            <div class="col-lg-7">
+                                                <input type="text" value="@Model.Teacher.SurName" class="form-control" name="teacherName" data-bv-field="teacherName">
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">院系</label>
+                                            <div class="col-lg-7">
+                                                <div>
+                                                    <select id="department" name="department" style="width: 100%;" data-placeholder="请选择院系" tabindex="-1">
+                                                        <option value=""></option>
+                                                        @foreach (var itemstr in L("TeacherSelectValueDepartment").Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries))
+                                                        {
+                                                            <option value="@itemstr" @(Model.Teacher.Department == itemstr ? "selected='selected'" : "")>@itemstr</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">登录账号</label>
+                                            <div class="col-lg-7">
+                                                <input type="text" value="@Model.Teacher.UserName" class="form-control" name="loginId">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="details-tab" class="tab-pane">
+
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">专业</label>
+                                            <div class="col-lg-7">
+                                                <div>
+                                                    <select id="major" name="major" style="width: 100%;" data-placeholder="请选择专业" tabindex="-1">
+                                                        <option value=""></option>
+                                                        @foreach (var itemstr in L("TeacherSelectValueMajor").Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries))
+                                                        {
+                                                            <option value="@itemstr" @(Model.Teacher.Major == itemstr ? "selected='selected'" : "")>@itemstr</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">学历</label>
+                                            <div class="col-lg-7">
+                                                <div>
+                                                    <select id="diploma" name="diploma" style="width: 100%;" data-placeholder="请选择学历" tabindex="-1">
+                                                        <option value=""></option>
+                                                        @foreach (var itemstr in L("SelectValueDiploma").Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries))
+                                                        {
+                                                            <option value="@itemstr" @(Model.Teacher.Diploma == itemstr ? "selected='selected'" : "")>@itemstr</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">学位</label>
+                                            <div class="col-lg-7">
+                                                <div>
+                                                    <select id="degree" name="degree" style="width: 100%;" data-placeholder="请选择学位" tabindex="-1">
+                                                        <option value=""></option>
+                                                        @foreach (var itemstr in L("SelectValueDegree").Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries))
+                                                        {
+                                                            <option value="@itemstr" @(Model.Teacher.Degree == itemstr ? "selected='selected'" : "")>@itemstr</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">职称</label>
+                                            <div class="col-lg-7">
+                                                <div>
+                                                    <select id="positionalTitle" name="positionalTitle" style="width: 100%;" data-placeholder="请选择职称" tabindex="-1">
+                                                        <option value=""></option>
+                                                        @foreach (var itemstr in L("SelectValuePositionalTitle").Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries))
+                                                        {
+                                                            <option value="@itemstr" @(Model.Teacher.PositionalTitle == itemstr ? "selected='selected'" : "")>@itemstr</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">工作年限</label>
+                                            <div class="col-lg-7">
+                                                <div>
+                                                    <select id="yearsOfWorking" name="yearsOfWorking" style="width: 100%;" data-placeholder="请选择工作年限" tabindex="-1">
+                                                        <option value=""></option>
+                                                        @foreach (var itemstr in L("SelectValueYearsOfWorking").Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries))
+                                                        {
+                                                            <option value="@itemstr" @(Model.Teacher.YearsOfTeaching == itemstr ? "selected='selected'" : "")>@itemstr</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">教学年限</label>
+                                            <div class="col-lg-7">
+                                                <div>
+                                                    <select id="yearsOfTeaching" name="yearsOfTeaching" style="width: 100%;" data-placeholder="请选择教学年限" tabindex="-1">
+                                                        <option value=""></option>
+                                                        @foreach (var itemstr in L("SelectValueYearsOfTeaching").Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries))
+                                                        {
+                                                            <option value="@itemstr" @(Model.Teacher.YearsOfWorking == itemstr ? "selected='selected'" : "")>@itemstr</option>
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">联系电话</label>
+                                            <div class="col-lg-7">
+                                                <input type="text" value="@Model.Teacher.Tel" class="form-control" name="tel">
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">性别</label>
+                                            <div class="col-lg-7">
+                                                <div>
+                                                    <select id="gender" name="gender" style="width: 100%;" data-placeholder="请选择性别" tabindex="-1">
+                                                        <option value=""></option>
+                                                        
+                                                        <option value="0" @(Model.Teacher.Gender == 0 ? "selected='selected'" : "")>男</option>
+                                                        <option value="1" @(Model.Teacher.Gender == 1 ? "selected='selected'" : "")>女</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">是否专职</label>
+                                            <div class="col-lg-7">
+                                                <div class="radio pull-left">
+                                                    <label>
+                                                        <input name="isFullTime" type="radio" @(Model.Teacher.IsFullTime ? "checked='checked'" : "") />
+                                                        <span class="text">专职</span>
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label>
+                                                        <input name="isFullTime" type="radio"  @(!Model.Teacher.IsFullTime ? "checked='checked'" : "")/>
+                                                        <span class="text">兼职</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-9 col-lg-offset-3">
+                                        <button type="submit" class="btn btn-blue">&nbsp;提&nbsp;&nbsp;&nbsp;&nbsp;交&nbsp;</button>
+                                        <a href="@Url.Action("Teacher")" class="btn btn-default">&nbsp;返回列表&nbsp;</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Body -->
+</div>

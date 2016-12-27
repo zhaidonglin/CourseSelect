@@ -1,0 +1,5 @@
+F:\Work Files\CourseSelect\CourseSelectingV2\GeetestSDK\bin\Release\GeetestSDK.dll
+F:\Work Files\CourseSelect\CourseSelectingV2\GeetestSDK\bin\Release\GeetestSDK.pdb
+F:\Work Files\CourseSelect\CourseSelectingV2\GeetestSDK\obj\Release\GeetestSDK.csprojResolveAssemblyReference.cache
+F:\Work Files\CourseSelect\CourseSelectingV2\GeetestSDK\obj\Release\GeetestSDK.dll
+F:\Work Files\CourseSelect\CourseSelectingV2\GeetestSDK\obj\Release\GeetestSDK.pdb

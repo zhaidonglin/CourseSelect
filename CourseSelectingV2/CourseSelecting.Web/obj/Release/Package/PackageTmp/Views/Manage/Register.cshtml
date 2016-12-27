@@ -1,0 +1,141 @@
+﻿@using Abp.Web.Mvc.Extensions
+@{
+    ViewBag.ActiveMenu = "About";
+}
+
+@section Styles
+{
+    @Html.IncludeStyle("~/beyondadmin/assets/css/dataTables.bootstrap.css")
+}
+@section Scripts
+{
+    @Html.IncludeScript("~/beyondadmin/assets/js/validation/bootstrapValidator.js")
+    @Html.IncludeScript("~/beyondadmin/assets/js/select2/select2.js")
+
+    @Html.IncludeScript("~/Views/Manage/Register.js")
+}
+
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="@Url.Action("Index")">首页</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Student")">用户注册</a>
+            </li>
+            <li class="active">注册列表</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Header -->
+    <div class="page-header position-relative">
+        <div class="header-title">
+            <h1>
+                用户注册
+            </h1>
+        </div>
+        <!--Header Buttons-->
+        <div class="header-buttons">
+            <a class="sidebar-toggler" href="#">
+                <i class="fa fa-arrows-h"></i>
+            </a>
+            <a class="refresh" id="refresh-toggler" href="">
+                <i class="glyphicon glyphicon-refresh"></i>
+            </a>
+            <a class="fullscreen" id="fullscreen-toggler" href="#">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+            </a>
+        </div>
+        <!--Header Buttons End-->
+    </div>
+    <!-- /Page Header -->
+    <!-- Page Body -->
+    <div class="page-body">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget  radius-bordered">
+                    <div class="widget-header">
+                        <span class="widget-caption"></span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="docs-example">
+                            <ul class="nav nav-tabs tabs-flat">
+                                <li class="active"><a href="#info-tab" data-toggle="tab">用户基础信息</a></li>
+                            </ul>
+                            <form id="formAddStudent" method="post" class="form-horizontal bv-form" novalidate="novalidate">
+                                <div class="tab-content tabs-flat">
+                                    <div class="tab-pane active" id="info-tab">
+                                        @*<div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">学生学号</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" name="studentNo" data-bv-field="studentNo"><i class="form-control-feedback" data-bv-field="fullName"  style="display: none;"></i>
+                                            </div>
+                                        </div>*@                 
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">性别</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" name="gender" data-bv-field="gender"><i class="form-control-feedback" data-bv-field="fullName" style="display: none;"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">联系方式</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" name="tel" data-bv-field="tel"><i class="form-control-feedback" data-bv-field="tel" style="display: none;"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">专业</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" name="major" data-bv-field="major"><i class="form-control-feedback" data-bv-field="major"  style="display: none;"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">年级</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" name="grade" data-bv-field="grade"><i class="form-control-feedback" data-bv-field="grade" style="display: none;"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">班级</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" name="class" data-bv-field="class"><i class="form-control-feedback" data-bv-field="class" style="display: none;"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">生源地</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" name="originOfStudent" data-bv-field="originOfStudent"><i class="form-control-feedback" data-bv-field="originOfStudent" style="display: none;"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">院系</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" name="department" data-bv-field="department"><i class="form-control-feedback" data-bv-field="department" style="display: none;"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">专业等级</label>
+                                            <div class="col-lg-9">
+                                                <input type="text" class="form-control" name="professionLevel" data-bv-field="professionLevel"><i class="form-control-feedback" data-bv-field="professionLevel" style="display: none;"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-9 col-lg-offset-3">
+                                        <button type="submit" class="btn btn-blue">&nbsp;提&nbsp;&nbsp;&nbsp;&nbsp;交&nbsp;</button>
+                                        <a href="@Url.Action("Student")" class="btn btn-default">&nbsp;返回列表&nbsp;</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Body -->
+</div>

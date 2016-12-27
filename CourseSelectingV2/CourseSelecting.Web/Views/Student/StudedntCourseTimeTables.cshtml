@@ -1,0 +1,92 @@
+﻿@model CourseSelecting.Web.Models.Teacher.AddCourseTimeTablesModel
+@using Abp.Web.Mvc.Extensions
+@{
+    ViewBag.ActiveMenu = "About";
+}
+
+@section Styles
+{
+    @Html.IncludeStyle("~/beyondadmin/assets/css/dataTables.bootstrap.css")
+}
+@section Scripts
+{
+    @Html.IncludeScript("~/beyondadmin/assets/js/validation/bootstrapValidator.js")
+    @Html.IncludeScript("~//beyondadmin/assets/js/datetime/bootstrap-timepicker.js")
+    @Html.IncludeScript("~/beyondadmin/assets/js/jquery-ui-1.10.4.custom.js")
+    @Html.IncludeScript("~/beyondadmin/assets/js/fullcalendar/fullcalendar.js")
+
+    @Html.IncludeScript("~/Views/Student/StudentCourseTimeTables.js")
+}
+
+
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="@Url.Action("Index")">首页</a>
+            </li>
+            <li class="active">课程表</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Header -->
+    <div class="page-header position-relative">
+        <div class="header-title">
+            <h1>
+                课程表
+            </h1>
+        </div>
+        <!--Header Buttons-->
+        <div class="header-buttons">
+            <a class="sidebar-toggler" href="#">
+                <i class="fa fa-arrows-h"></i>
+            </a>
+            <a class="refresh" id="refresh-toggler" href="">
+                <i class="glyphicon glyphicon-refresh"></i>
+            </a>
+            <a class="fullscreen" id="fullscreen-toggler" href="#">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+            </a>
+        </div>
+        <!--Header Buttons End-->
+    </div>
+    <!-- /Page Header -->
+    <!-- Page Body -->
+    <div class="page-body">
+        <div class="row">
+            @*<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="widget flat">
+                    <div class="widget-header bordered-bottom bordered-orange">
+                        <i class="widget-icon glyphicon glyphicon-plus orange"></i>
+                        <span class="widget-caption">我的课程</span>
+                    </div><!--Widget Header-->
+                    <div class="widget-body">
+
+                        <div id='external-events'>
+                            @foreach (var course in Model.TeacherCourses.Items)
+                            {
+                                <div class='external-event' data-id="@course.Id">@(course.Course.SubjectProject.Name + "[" + course.Course.Name + "]")</div>
+                            }
+                        </div>
+
+                    </div><!--Widget Body-->
+                </div>
+            </div>*@
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="widget flat">
+                    <div class="widget-header bordered-bottom bordered-sky">
+                        <i class="widget-icon fa fa-calendar sky"></i>
+                        <span class="widget-caption">预约课程表</span>
+                    </div><!--Widget Header-->
+                    <div class="widget-body">
+                        <div class="widget-main no-padding">
+                            <div id='calendar'></div>
+                        </div><!--Widget Main Container-->
+                    </div><!--Widget Body-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

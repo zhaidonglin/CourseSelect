@@ -1,0 +1,154 @@
+﻿@model CourseSelecting.Web.Models.Manage.CourseAddModel
+@using Abp.Web.Mvc.Extensions
+@{
+    ViewBag.ActiveMenu = "CourseManage";
+}
+
+@section Styles
+{
+    @Html.IncludeStyle("~/beyondadmin/assets/css/dataTables.bootstrap.css")
+}
+@section Scripts
+{
+    @Html.IncludeScript("~/beyondadmin/assets/js/validation/bootstrapValidator.js")
+    @Html.IncludeScript("~/beyondadmin/assets/js/select2/select2.js")
+    @*@Html.IncludeScript("~/beyondadmin/assets/js/fuelux/spinner/fuelux.spinner.min.js")*@
+    @Html.IncludeScript("~/Views/Manage/CourseAdd.js")
+}
+
+
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="@Url.Action("Index")">首页</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Course")">课程管理</a>
+            </li>
+            <li class="active">添加课程</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Header -->
+    <div class="page-header position-relative">
+        <div class="header-title">
+            <h1>
+                添加课程
+            </h1>
+        </div>
+        <!--Header Buttons-->
+        <div class="header-buttons">
+            <a class="sidebar-toggler" href="#">
+                <i class="fa fa-arrows-h"></i>
+            </a>
+            <a class="refresh" id="refresh-toggler" href="">
+                <i class="glyphicon glyphicon-refresh"></i>
+            </a>
+            <a class="fullscreen" id="fullscreen-toggler" href="#">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+            </a>
+        </div>
+        <!--Header Buttons End-->
+    </div>
+    <!-- /Page Header -->
+    <!-- Page Body -->
+    <div class="page-body">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget radius-bordered">
+                    <div class="widget-header">
+                    </div>
+                    <div class="widget-body">
+                        <div class="docs-example">
+                            <ul class="nav nav-tabs tabs-flat">
+                                <li class="active">
+                                    <a data-toggle="tab" href="#info-tab">课程信息</a>
+                                </li>
+                            </ul>
+                            <form id="formCourseAdd" class="form-horizontal bv-form" method="post" novalidate="novalidate">
+                                <div class="tab-content tabs-flat">
+                                    <div class="form-group has-feedback">
+                                        <label class="col-lg-3 control-label">所属项目</label>
+                                        <div class="col-lg-7">
+                                            <div>
+                                                <select id="subject" name="subject" style="width: 100%;" data-placeholder="请选择所属项目" tabindex="-1">
+                                                    <option value=""></option>
+                                                    @foreach (var subjectproject in Model.SubjectProjects.Items)
+                                                    {
+                                                        <option value="@subjectproject.Id">@subjectproject.Name</option>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback ">
+                                        <label class="col-lg-3 control-label">课程名称</label>
+                                        <div class="col-lg-7">
+                                            <input class="form-control" placeholder="课程名称" type="text" name="name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label class="col-lg-3 control-label">学分</label>
+                                        <div class="col-lg-7">
+                                           
+                                            <input type="text" class="form-control" name="credit">
+                                        </div>
+                                    </div>
+                                    @*<div class="form-group has-feedback">
+                                        <label class="col-lg-3 control-label">所属年级</label>
+                                        <div class="col-lg-7">
+                                            <div>
+                                                <select id="fitgrade" name="fitgrade" style="width: 100%;" data-placeholder="请选择所属年级" tabindex="-1">
+                                                    <option value=""></option>
+                                                    @foreach (var itemstr in L("SelectValueFitGrade").Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries))
+                                                    {
+                                                        <option value="@itemstr">@itemstr</option>
+                                                    }
+                                                    
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>*@
+                                   
+                                    <div class="form-group has-feedback">
+                                        <label class="col-lg-3 control-label">限选人数</label>
+                                        <div class="col-lg-7">
+                                            <div class="spinner spinner-horizontal spinner-right">
+                                                <div class="spinner-buttons	btn-group">
+                                                    <button type="button" class="btn spinner-down blueberry">
+                                                        <i class="fa fa-minus"></i>
+                                                    </button>
+                                                    <button type="button" class="btn spinner-up purple">
+                                                        <i class="fa fa-plus"></i>
+                                                    </button>
+                                                </div>
+                                                <input type="text" name="limitNumbers" placeholder="限选人数" class="spinner-input form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group has-feedback">
+                                        <label class="col-lg-3 control-label">备注</label>
+                                        <div class="col-lg-7">
+                                            <textarea id="form-field-8" class="form-control" name="remark" placeholder="备注" rows="6"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-7 col-lg-offset-3">
+                                        <button type="submit" class="btn btn-blue">&nbsp;提&nbsp;&nbsp;&nbsp;&nbsp;交&nbsp;</button>
+                                        <a href="@Url.Action("Course")" class="btn btn-default">&nbsp;返回列表&nbsp;</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Body -->
+</div>
+

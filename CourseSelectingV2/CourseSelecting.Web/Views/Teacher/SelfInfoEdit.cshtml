@@ -1,0 +1,191 @@
+﻿@*@using Abp.Web.Mvc.Extensions
+@{
+    ViewBag.ActiveMenu = "About";
+}
+
+@section Styles
+{
+    @Html.IncludeStyle("~/beyondadmin/assets/css/dataTables.bootstrap.css")
+}
+@section Scripts
+{
+    @Html.IncludeScript("~/beyondadmin/assets/js/validation/bootstrapValidator.js")
+    @Html.IncludeScript("~/Views/Teacher/SelfInfo.js")
+}
+
+
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="@Url.Action("Index")">首页</a>
+            </li>
+            <li class="active">个人信息</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Header -->
+    <div class="page-header position-relative">
+        <div class="header-title">
+            <h1>
+                个人信息
+            </h1>
+        </div>
+        <!--Header Buttons-->
+        <div class="header-buttons">
+            <a class="sidebar-toggler" href="#">
+                <i class="fa fa-arrows-h"></i>
+            </a>
+            <a class="refresh" id="refresh-toggler" href="">
+                <i class="glyphicon glyphicon-refresh"></i>
+            </a>
+            <a class="fullscreen" id="fullscreen-toggler" href="#">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+            </a>
+        </div>
+        <!--Header Buttons End-->
+    </div>
+    <!-- /Page Header -->
+    <!-- Page Body -->
+    <div class="page-body">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget">
+                    <form id="registrationForm" class="form-horizontal bv-form" data-bv-feedbackicons-validating="glyphicon glyphicon-refresh" data-bv-feedbackicons-invalid="glyphicon glyphicon-remove" data-bv-feedbackicons-valid="glyphicon glyphicon-ok" data-bv-message="This value is not valid" method="post" novalidate="novalidate">
+                        <div class="form-title"> </div>
+                        <div class="form-group has-feedback">
+                            <label class="col-lg-4 control-label">姓名</label>
+                            <div class="col-lg-3">
+                                <input type="text" value="@Model.Teacher.TeacherName" class="form-control" name="name" data-bv-field="name" placeholder="姓名"><i class="form-control-feedback" data-bv-field="name" style="display: none;"></i>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="col-lg-4 control-label">工号</label>
+                            <div class="col-lg-3">
+                                <input type="hidden" id="lblTeacherId" value="@Model.Teacher.Id" />
+                                <input type="text" value="@Model.Teacher.TeacherNo" class="form-control" name="teacherNo" data-bv-field="teacherNo" placeholder="工号"><i class="form-control-feedback" data-bv-field="teacherNo" style="display: none;"></i>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="col-lg-4 control-label">性别</label>
+                            <div class="col-lg-3">
+                                <div>
+                                    <select id="gender" name="gender" style="width: 100%;" data-placeholder="请选择性别" tabindex="-1">
+                                        <option value="请选择性别">请选择性别</option>
+                                        <option value="0" @(Model.Teacher.Gender == "0" ? "selected='selected'" : "")>0</option>
+                                        <option value="1" @(Model.Teacher.Gender == "1" ? "selected='selected'" : "")>1</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="col-lg-4 control-label">院系</label>
+                            <div class="col-lg-3">
+                                <div>
+                                    <select id="department" name="department" style="width: 100%;" data-placeholder="请选择院系" tabindex="-1">
+                                        <option value="请选择院系">请选择院系</option>
+                                        <option value="计算机学院" @(Model.Teacher.Department == "计算机学院" ? "selected='selected'" : "")>计算机学院</option>
+                                        <option value="医学院" @(Model.Teacher.Department == "医学院" ? "selected='selected'" : "")>医学院</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="col-lg-4 control-label">专业</label>
+                            <div class="col-lg-3">
+                                <div>
+                                    <select id="major" name="major" style="width: 100%;" data-placeholder="请选择专业" tabindex="-1">
+                                        <option value="请选择专业">请选择专业</option>
+                                        <option value="软件工程" @(Model.Teacher.Major == "软件工程" ? "selected='selected'" : "")>软件工程</option>
+                                        <option value="临床医学" @(Model.Teacher.Major == "临床医学" ? "selected='selected'" : "")>临床医学</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="col-lg-4 control-label">学历</label>
+                            <div class="col-lg-3">
+                                <div>
+                                    <select id="diploma" name="diploma" style="width: 100%;" data-placeholder="请选择学历" tabindex="-1">
+                                        <option value="请选择学历">请选择学历</option>
+                                        <option value="本科" @(Model.Teacher.Diploma == "本科" ? "selected='selected'" : "")>本科</option>
+                                        <option value="研究生" @(Model.Teacher.Diploma == "研究生" ? "selected='selected'" : "")>研究生</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="col-lg-4 control-label">学位</label>
+                            <div class="col-lg-3">
+                                <div>
+                                    <select id="degree" name="degree" style="width: 100%;" data-placeholder="请选择学位" tabindex="-1">
+                                        <option value="请选择学位">请选择学位</option>
+                                        <option value="学士" @(Model.Teacher.Degree == "学士" ? "selected='selected'" : "")>学士</option>
+                                        <option value="硕士" @(Model.Teacher.Degree == "硕士" ? "selected='selected'" : "")>硕士</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="col-lg-4 control-label">职称</label>
+                            <div class="col-lg-3">
+                                <div>
+                                    <select id="positionalTitle" name="positionalTitle" style="width: 100%;" data-placeholder="请选择职称" tabindex="-1">
+                                        <option value="请选择职称">请选择职称</option>
+                                        <option value="讲师" @(Model.Teacher.PositionalTitle == "讲师" ? "selected='selected'" : "")>讲师</option>
+                                        <option value="教授" @(Model.Teacher.PositionalTitle == "教授" ? "selected='selected'" : "")>教授</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="col-lg-4 control-label">工作年限</label>
+                            <div class="col-lg-3">
+                                <input type="text" value="@Model.Teacher.YearsOfWorking" class="form-control" name="yearsOfWorking" data-bv-field="yearsOfWorking" placeholder="工作年限"><i class="form-control-feedback" data-bv-field="yearsOfWorking" style="display: none;"></i>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="col-lg-4 control-label">教学年限</label>
+                            <div class="col-lg-3">
+                                <input type="text" value="@Model.Teacher.YearsOfTeaching" class="form-control" name="yearsOfTeaching" data-bv-field="yearsOfTeaching" placeholder="教学年限"><i class="form-control-feedback" data-bv-field="yearsOfTeaching" style="display: none;"></i>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="col-lg-4 control-label">专职还是兼职</label>
+                            <div class="col-lg-3">
+                                <div>
+                                    <select id="isFullTime" name="isFullTime" style="width: 100%;" data-placeholder="请选择工作" tabindex="-1">
+                                        <option value="请选择工作">请选择工作</option>
+                                        <option value="专职" @(Model.Teacher.IsFullTime == "专职" ? "selected='selected'" : "")>专职</option>
+                                        <option value="兼职" @(Model.Teacher.IsFullTime == "专职" ? "selected='selected'" : "")>兼职</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label class="col-lg-4 control-label">联系方式</label>
+                            <div class="col-lg-3">
+                                <input class="form-control" type="text" value="@Model.Teacher.Tel" data-bv-notempty-message="The first name is required and cannot be empty" data-bv-notempty="true" placeholder="联系方式" name="firstName" data-bv-field="firstName">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group has-feedback">
+                            <label class="col-lg-4 control-label">个人说明</label>
+                            <div class="col-lg-3">
+                                <textarea id="form-field-8" class="form-control" placeholder="Default Text" rows="4"></textarea>
+                            </div>
+                        </div>
+                        <div class="buttons-preview" style="margin-left:43%;">
+                            <a class="btn btn-success shiny" href="javascript:void(0);" onclick="edit_click">&nbsp;提&nbsp;&nbsp;&nbsp;&nbsp;交&nbsp;</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Body -->
+</div>*@
+

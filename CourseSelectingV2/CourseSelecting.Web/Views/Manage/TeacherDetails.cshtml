@@ -1,0 +1,138 @@
+﻿@model CourseSelecting.Web.Models.Manage.TeacherCourseDetailsModel
+@using Abp.Threading.Extensions
+@using Abp.Web.Mvc.Extensions
+
+@{
+    ViewBag.ActiveMenu = "TeacherManage";
+}
+
+@section Styles
+{
+    @Html.IncludeStyle("~/beyondadmin/assets/css/dataTables.bootstrap.css")
+}
+@section Scripts
+{
+    @Html.IncludeScript("~/beyondadmin/assets/js/validation/bootstrapValidator.js")
+    @Html.IncludeScript("~/beyondadmin/assets/js/select2/select2.js")
+
+    @Html.IncludeScript("~/Views/Manage/TeacherDetails.js")
+}
+
+
+<div class="page-content">
+    <!-- Page Breadcrumb -->
+    <div class="page-breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="fa fa-home"></i>
+                <a href="@Url.Action("Index")">首页</a>
+            </li>
+            <li>
+                <a href="@Url.Action("Teacher")">教师管理</a>
+            </li>
+            <li class="active">教师详情</li>
+        </ul>
+    </div>
+    <!-- /Page Breadcrumb -->
+    <!-- Page Header -->
+    <div class="page-header position-relative">
+        <div class="header-title">
+            <h1>
+                教师详情
+            </h1>
+        </div>
+        <!--Header Buttons-->
+        <div class="header-buttons">
+            <a class="sidebar-toggler" href="#">
+                <i class="fa fa-arrows-h"></i>
+            </a>
+            <a class="refresh" id="refresh-toggler" href="">
+                <i class="glyphicon glyphicon-refresh"></i>
+            </a>
+            <a class="fullscreen" id="fullscreen-toggler" href="#">
+                <i class="glyphicon glyphicon-fullscreen"></i>
+            </a>
+        </div>
+        <!--Header Buttons End-->
+    </div>
+    <!-- /Page Header -->
+    <!-- Page Body -->
+    <div class="page-body">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="widget  radius-bordered">
+                    <div class="widget-header">
+                        <span class="widget-caption"></span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="docs-example">
+                            <ul class="nav nav-tabs tabs-flat">
+                                <li class="active"><a href="#info-tab" data-toggle="tab">教师基础信息</a></li>
+                            </ul>
+                            <form id="formAddTeacher" method="post" class="form-horizontal bv-form" novalidate="novalidate">
+                                <div class="tab-content tabs-flat">
+                                    <div class="tab-pane active" id="info-tab">
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">教师工号</label>
+                                            <div class="col-lg-7">
+                                                <input type="hidden" id="lblTeacherId" value="@Model.Teacher.Id"/>
+                                                <input type="text" readonly="readonly" value="@Model.Teacher.TeacherNo" class="form-control" name="teacherNo" data-bv-field="teacherNo"><i class="form-control-feedback" data-bv-field="fullName" style="display: none;"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">教师姓名</label>
+                                            <div class="col-lg-7">
+                                                <input type="text" readonly="readonly" value="@Model.Teacher.Name" class="form-control" name="teacherName" data-bv-field="teacherName"><i class="form-control-feedback" data-bv-field="jobTitle" style="display: none;"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">院系</label>
+                                            <div class="col-lg-7">
+                                                <input type="text" readonly="readonly" value="@Model.Teacher.Department" class="form-control" name="department" data-bv-field="department"><i class="form-control-feedback" data-bv-field="jobTitle" style="display: none;"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">登录账号</label>
+                                            <div class="col-lg-7">
+                                                <input type="text" readonly="readonly" value="@Model.Teacher.UserName" class="form-control" name="loginId" data-bv-field="loginId"><i class="form-control-feedback" data-bv-field="jobTitle" style="display: none;"></i>
+                                            </div>
+                                        </div>
+                                        <div class="form-group has-feedback">
+                                            <label class="col-lg-3 control-label">所授课程</label>
+                                            <div class="col-lg-7">
+                                                <select id="courses" name="courses" style="width: 100%;" data-placeholder="请选择所授课程" tabindex="-1" multiple="multiple">
+                                                    <option value=""></option>
+                                                    @foreach (var subject in Model.SubjectProjectCourses.Items)
+                                                    {
+                                                        <optgroup label="@subject.Name">
+                                                            @foreach (var course in subject.Courses)
+                                                            {
+                                                                {
+                                                                    var strSelected = Model.TeacherCourses.Items.Any(x => x.Course.Id == course.Id) ? "selected=\"selected\"" : "";
+                                                                    @:<option value="@course.Id" @(strSelected)>@course.Name</option>
+                                                                }
+                                                            }
+                                                        </optgroup>
+                                                    }
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-7 col-lg-offset-3">
+                                        <button type="submit" class="btn btn-blue">&nbsp;提&nbsp;&nbsp;&nbsp;&nbsp;交&nbsp;</button>
+                                        <a href="@Url.Action("Teacher")" class="btn btn-default">&nbsp;返回列表&nbsp;</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Body -->
+</div>
+
